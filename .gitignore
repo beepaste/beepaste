@@ -22,3 +22,4 @@ test
 *.sh
 
 front/vendor/*
+front/node_modules/*
