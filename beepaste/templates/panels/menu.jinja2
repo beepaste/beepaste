@@ -1,0 +1,16 @@
+    {% for i in items %}
+        {% if i['items'] %}
+            <li class="dropdown {% if i['active'] %}active{% endif %} ">
+                <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">{{ _(i['name']) }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {% for j in i['items'] %}
+                        <li {% if j['active'] %}class="active" {% endif %}><a
+                                href="{{ j['path'] }}">{{ _(j['name']) }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li {% if i['active'] %}class="active" {% endif %}><a href="{{ i['path'] }}">{{ i['name'] | safe }}</a></li>
+        {% endif %}
+    {% endfor %}
