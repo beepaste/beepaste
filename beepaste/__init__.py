@@ -4,6 +4,7 @@ from pyramid.session import SignedCookieSessionFactory
 
 my_session_factory = SignedCookieSessionFactory('itsaseekreet')
 
+
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
@@ -13,5 +14,5 @@ def main(global_config, **settings):
     config.include('.routes')
     config.include('pyramid_mailer')
     config.set_session_factory(my_session_factory)
-    config.scan()
+    config.scan('views')
     return config.make_wsgi_app()

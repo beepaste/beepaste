@@ -113,7 +113,7 @@ var ACE = {
             return b;
         }
 
-		editor.setTheme("ace/theme/xcode");
+		editor.setTheme("ace/theme/Dawn");
         editor.setReadOnly(true);
 	    editor.setAutoScrollEditorIntoView(true);
         editor.setOption("minLines", max(editor.getSession().getValue().split('\n').length, 10));

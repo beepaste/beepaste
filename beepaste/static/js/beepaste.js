@@ -104,7 +104,7 @@ var ACE = {
 		editor = ace.edit("Editor");
 
 
-		editor.setTheme("ace/theme/xcode");
+		editor.setTheme("ace/theme/Dawn");
 	    editor.setAutoScrollEditorIntoView(true);
 	    editor.getSession().setUseWrapMode(true);
 	    editor.setOption("maxLines", 25);
