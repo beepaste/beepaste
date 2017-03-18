@@ -1,0 +1,97 @@
+{% extends main_template %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-content" style="min-height: 100%;">
+          <div class="title-container"><span class="card-title">About API</span></div>
+          <p>As you can see in the <a href="{{ request.route_url('about') }}">about us</a> you can paste using command-line with <code>nc</code>. However, if you need an api to develop apps using our pastebin, you should have <code>api-key</code>! To obtain that, you can contact <code>MohammadAmin Vahedinia</code> from the <a href="{{ request.route_url('about') }}">about us section</a> and get the <code>api-key</code>. After that, you can use this functions:</p>
+
+          <h4 id="variables">Variables</h4>
+          <p>Here are variables you may work with them:
+                <table class="highlight">
+                    <thead>
+                        <th data-field="name">Name</th>
+                        <th data-field="type">Type/Len</th>
+                        <th data-field="req-opt">Required/Optional</th>
+                        <th data-field="desc">Description</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>api-key</td>
+                            <td>UnicodeString - 255</td>
+                            <td>required</td>
+                            <td>your unique api-key, used to authenticate you (and revoke access if you are spamming!)</td>
+                        </tr>
+                        <tr>
+                            <td>pasteTitle</td>
+                            <td>UnicodeString - 255</td>
+                            <td>optional</td>
+                            <td>paste title, what paste is for, default is <code>Untitled</code></td>
+                        </tr>
+                        <tr>
+                            <td>pasteAuthor</td>
+                            <td>UnicodeString - 255</td>
+                            <td>optional</td>
+                            <td>name of the person who pasted this paste default is <code>Anonymous</code></td>
+                        </tr>
+                        <tr>
+                            <td>pasteLanguage</td>
+                            <td>UnicodeString - 10</td>
+                            <td>required</td>
+                            <td>what syntax highlighting to use for this paste, valid options are provided with <code>/api/langs</code></td>
+                        </tr>
+                        <tr>
+                            <td>pasteExpire</td>
+                            <td>UnicodeString - 10</td>
+                            <td>optional</td>
+                            <td>time in seconds to keep paste, default is <code>0</code> means keep for ever</td>
+                        </tr>
+                        <tr>
+                            <td>pasteRaw</td>
+                            <td>Base64String</td>
+                            <td>required</td>
+                            <td>the paste raw text, encoded in Base64</td>
+                        </tr>
+                        <tr>
+                            <td>pasteEncryption</td>
+                            <td>UnicodeString - 6</td>
+                            <td>optional</td>
+                            <td>which encryption method is used to encrypt paste, default is <code>no</code>, accepted values are <code>no</code>, <code>pgp</code>, <code>passwd</code></td>
+                        </tr>
+                        <tr>
+                            <td>pasteID</td>
+                            <td>UnicodeString - 6</td>
+                            <td>required</td>
+                            <td>when you want to get some paste's data, it is required</td>
+                        </tr>
+                        <tr>
+                            <td>shortURL</td>
+                            <td>UnicodeString - 60</td>
+                            <td><strong>not used</strong></td>
+                            <td>it is returned in get function</td>
+                        </tr>
+                    </tbody>
+                </table>
+          </p>
+
+          <h4 id="createpastes">Create Pastes</h4>
+            <p>To create paste, you should send <code>data</code> in json format to <code>/api/create</code>. <code>pasteRaw</code>, <code>api-key</code> and <code>pasteLanguage</code> are required to be sent with <code>data</code>, and <code>pasteTitle</code>, <code>pasteAuthor</code> and <code>pasteExpire</code> are optional.</p><p>You will be returned a string called <code>pasteID</code> in <code>data</code> which <code>pasteID</code> is the pasteID of the newly created paste.</p>
+
+          <h4 id="getpaste">Get Paste</h4>
+            <p>To get an specific paste, you need to just send a request to <code>/api/get</code>. You have to pass <code>pasteID</code> and your <code>api-key</code> in <code>data</code>, and you will be returned the variables where described above in <code>data</code>.</p>
+
+          <h4 id="getlanguageslist">Get Languages List</h4>
+            <p>To get list of valid syntax highlightings, you need to just send a simple plain request to <code>/api/langs</code> and you be given the list of valid languages as pairs of &quot;shortname&quot;, &quot;longname&quot; as <code>langs</code> in <code>data</code> where you should send <code>shortname</code> in your requests!</p>
+
+          <h4 id="examples">Examples</h4>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
