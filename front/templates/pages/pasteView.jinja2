@@ -1,0 +1,90 @@
+{% extends main_template %}
+
+{% block content %}
+<div class="container">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card">
+            <div class="card-content view-card" style="min-height: 100%;">
+                <div class="title-spacer">
+                    <div class="title-container"><span class="card-title"><h3>{{ paste.title | safe }}</h3></span></div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m9 l10 left">
+                        <div class="details">By {{paste.name}}, Created {{ paste.created_in_words() }} ago</div>
+                        <div class="details">URL <a href="{{ request.route_url('view_paste', pasteID=paste.pasteURI) }}">{{ request.route_url('view_paste', pasteID=paste.pasteURI) }}</a></div>
+                        <div class="details">short URL <a href="{{ paste.shortURL }}">{{ paste.shortURL }}</a></div>
+                        <div class="details">Embed Code: <input data-lang-showcode="Show Code" id="embed_field" type="text" value="{{ embedCode }}"/></div>
+                        <div class="details"><a href="{{ request.route_url('view_raw', pasteID=paste.pasteURI) }}">View Raw</a></div>
+                    </div>
+                    <div class="col s12 m3 l2 right">
+                        <img class="responsive-img" src="{{ request.route_url('qrcode', uri=paste.pasteURI) }}" alt="share using qrcode!">
+                    </div>
+                </div>
+                <div class="row editor-area-view">
+                    <input id="pasteLanguage" value="{{ paste.lang }}" type="hidden">
+                    <input id="pasteEncryption" value="{{ paste.encryption }}" type="hidden">
+                    <pre id="Editor" class="editor-view">{{ paste.text }}</pre>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<script type="text/javascript" src="{{request.static_url('beepaste:static/js/ace/ace.js')}}"></script>-->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
+      <script type="text/javascript" src="{{request.static_url('beepaste:static/js/beepaste-view.js')}}"></script>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </a>
+    <ul>
+        <li><a class="btn-floating blue darken-1" href="https://telegram.me/share/url?url={{ paste.shortURL }}"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+        <li><a class="btn-floating red darken-1" href="https://plus.google.com/share?url={{ paste.shortURL }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+        <li><a class="btn-floating blue darken-3" href="https://www.facebook.com/sharer/sharer.php?u={{ paste.shortURL }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="btn-floating blue lighten-2" href="https://twitter.com/intent/tweet?text={{ paste.shortURL }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
+
+<div class="modal modal-fixed-footer" id="passwdDialog" role="dialog">
+    <div class="modal-content">
+        <h4 class="modal-title">Decrypt your paste with Password-OTP</h4>
+        <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+            password is required to decrypt your paste!
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="5" id="passwd"></textarea>
+            <label for="passwd">Your Password:</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="passwdSubmit">Continue</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>
+
+<div class="modal modal-fixed-footer" id="pgpDialog" role="dialog">
+    <div class="modal-content">
+        <h4 class="modal-title">Decrypt your paste with PGP key</h4>
+        <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+            pgp-key is required to Decrypt your paste!
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="2" id="pgppass"></textarea>
+            <label for="pgppass">Your passphrase:</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="5" id="pgpkey"></textarea>
+            <label for="pgpkey">Your PGP public-key:</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="pgpSubmit">Continue</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>
+{% endblock %}

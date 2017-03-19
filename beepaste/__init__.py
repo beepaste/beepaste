@@ -14,5 +14,5 @@ def main(global_config, **settings):
     config.include('.routes')
     config.include('pyramid_mailer')
     config.set_session_factory(my_session_factory)
-    config.scan('views')
+    config.scan()
     return config.make_wsgi_app()

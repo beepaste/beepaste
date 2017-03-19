@@ -1,0 +1,32 @@
+{
+  "name": "beepaste",
+  "version": "0.0.0",
+  "main": "gruntfile.coffee",
+  "authors": "beepaste",
+  "repository": {
+    "type": "git",
+    "url": "http://beepaste.ir/"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "grunt": "^1.0.1",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-coffee-percolator": "~0.2.3",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-coffee": "~1.0.0",
+    "grunt-contrib-compass": "^1.0.1",
+    "grunt-contrib-concat": "~1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-cssmin": "~2.0.0",
+    "grunt-contrib-handlebars": "~1.0.0",
+    "grunt-contrib-jade": "^1.0.0",
+    "grunt-contrib-sass": "~1.0.0",
+    "grunt-contrib-uglify": "~2.2.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-este-watch": "^0.1.18",
+    "grunt-newer": "^1.1.0",
+    "js-yaml": "^3.2.7",
+    "requirejs": "^2.1.16"
+  }
+}

@@ -1,0 +1,23 @@
+
+<div class="row">
+    {% for i in items %}
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ items[i]['img'] }}">
+            </div>
+            <div class="card-content">
+              <div class="title-container"><span class="card-title">{{ items[i]['name'] }}</span></div>
+              <p>{{ items[i]['about'] }}</p>
+            </div>
+            <div class="card-action">
+              <div class="row" style="margin-bottom: 0;">
+                  {% for s in items[i]['social'] %}
+                    <div class="col s4 center"><a class="btn-floating btn-large waves-effect waves-light {{s['color']}}" href="{{ s['link'] }}"><i class="fa {{ s['icon'] }}"></i></a></div>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+</div>
