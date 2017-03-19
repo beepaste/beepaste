@@ -1,0 +1,36 @@
+{% extends main_template %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+            <div class="col s12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="title-container"><span class="card-title">About BeePaste</span></div>
+                  <p><strong>BeePaste</strong> is a simple pastebin which is written using <strong>python</strong>, and <strong>pyramid framework</strong>. It's very first usage was just to share our code snippets with friends, but while we grew up, we saw new worlds, such as <code>Sys admins</code>, <code>Bloggers</code> and <code>Teachers</code>, whomever has some text to share with others! They also needed somewhere to share their pastes like <code>server logs</code>, <code>blog posts</code> and <code>homework</code> while they are chatting with others. So <strong>BeePaste</strong> is getting bigger and more useful by time, from a simple pastebin, it is becoming an advanced text sharing platform!</p>
+                  <p>Now let's see what are its features:</p>
+                    <blockquote>
+                      Paste safely with <strong>client-side</strong> paste encryption! (optional)
+                    </blockquote>
+                    <blockquote>
+                      If you are a sysadmin or just want to send server logs to someone, you can paste it within the shell! just use <code>cat LOGFILE | nc beepaste.ir 1111</code>! for more information, please visit <a href="https://github.com/beepaste/pastecat">PasteCat Repository</a>
+                    </blockquote>
+                    <blockquote>
+                      Also there is an <strong>rest-ful API</strong> which you can build your apps based on!
+                    </blockquote>
+                    <blockquote>
+                      It is using <strong>ACE EDIT</strong> as editor and its powerful features like <strong>syntax highlighting</strong>
+                    </blockquote>
+                    <blockquote>
+                      And more upcoming features are on the way to the server :))
+                    </blockquote>
+                </div>
+              </div>
+            </div>
+    </div>
+
+    {{ panel('authors') }}
+</div>
+
+{% endblock %}

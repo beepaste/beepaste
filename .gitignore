@@ -20,3 +20,6 @@ Data.fs*
 coverage
 test
 *.sh
+
+front/vendor/*
+front/node_modules/*

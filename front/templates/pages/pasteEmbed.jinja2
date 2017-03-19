@@ -1,0 +1,52 @@
+{% extends 'beepaste:templates/layouts/frame.jinja2' %}
+
+{% block content %}
+<div class="row editor-area-view">
+    <input id="pasteLanguage" value="{{ paste.lang }}" type="hidden">
+    <input id="pasteEncryption" value="{{ paste.encryption }}" type="hidden">
+    <pre id="Editor" class="editor-view">{{ paste.text }}</pre>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
+<script type="text/javascript" src="{{request.static_url('beepaste:static/js/beepaste-view.js')}}"></script>
+
+<div class="modal modal-fixed-footer" id="passwdDialog" role="dialog">
+    <div class="modal-content">
+        <h4 class="modal-title">Decrypt your paste with Password-OTP</h4>
+        <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+            password is required to decrypt your paste!
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="5" id="passwd"></textarea>
+            <label for="passwd">Your Password:</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="passwdSubmit">Continue</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>
+
+<div class="modal modal-fixed-footer" id="pgpDialog" role="dialog">
+    <div class="modal-content">
+        <h4 class="modal-title">Decrypt your paste with PGP key</h4>
+        <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+            pgp-key is required to Decrypt your paste!
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="2" id="pgppass"></textarea>
+            <label for="pgppass">Your passphrase:</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="fa fa-lock prefix"></i>
+            <textarea class="materialize-textarea" rows="5" id="pgpkey"></textarea>
+            <label for="pgpkey">Your PGP public-key:</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="pgpSubmit">Continue</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>
+{% endblock %}
