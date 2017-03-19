@@ -1,0 +1,114 @@
+{% extends "../base.jinja2" %}
+
+{% block content %}
+<div class="container">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card">
+            <div class="card-content" style="min-height: 100%;">
+              <div class="title-container"><span class="card-title">Create a New Paste</span></div>
+                <form action="{{ form.action }}" method="post" id="pasteForm">
+                  <div class="form-container">
+                    <div class="row">
+		    	<div>
+                            {{ form.csrf_token() | safe }}
+			</div>
+                        <div class="input-field col s12 m3">
+                            {% for error in form.pasteAuthor.errors %}
+                                <div class="error">{{ error }}</div>
+                            {% endfor %}
+                            <i class="fa fa-user prefix"></i>
+                            <input id="pasteAuthor" type="text" class="" name="pasteAuthor">
+                            {{ form.pasteAuthor.label | safe }}
+                        </div>
+                        <div class="input-field col s12 m3">
+                            {% for error in form.pasteTitle.errors %}
+                                <div class="error">{{ error }}</div>
+                            {% endfor %}
+                            <i class="fa fa-flag prefix"></i>
+                            <input id="pasteTitle" type="text" class="" name="pasteTitle">
+                            {{ form.pasteTitle.label | safe }}
+                        </div>
+                        <div class="input-field col s12 m3">
+                            <i class="fa fa-code prefix"></i>
+                            {{ form.pasteLanguage() | safe }}
+                        </div>
+                        <div class="input-field col s12 m3">
+                            <i class="fa fa-calendar prefix"></i>
+                            {{ form.pasteExpire() | safe }}
+                        </div>
+                    </div>
+                    <div class="editor-area row">
+                        <div class="col s12">
+                            {% for error in form.pasteRaw.errors %}
+                                <div class="error">{{ error }}</div>
+                            {% endfor %}
+                            <input type="hidden" id="pasteRaw" name="pasteRaw">
+                            <pre id="Editor"></pre>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="encrypt" class="encryption-label"><i class="fa fa-lock"></i> Encryption</label>
+                            <div id="encrypt">
+                                <input id="noEncrypt" class="with-gap" type="radio" name="pasteEncryption" value="no" checked>
+                                <label for="noEncrypt">No Encryption</label>
+                                <input id="passwdEncrypt" class="with-gap" type="radio" name="pasteEncryption" value="passwd">
+                                <label for="passwdEncrypt">Encrypt with Password</label>
+                                <input id="pgpEncrypt" class="with-gap" type="radio" name="pasteEncryption" value="pgp">
+                                <label for="pgpEncrypt">Encrypt with PGP Keys</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <button class="col s12 btn-large waves-effect waves-light" type="submit" id="submitBtn">Create Paste!
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal modal-fixed-footer" id="passwdDialog" role="dialog">
+                        <div class="modal-content">
+                            <h4 class="modal-title">Encrypt your paste with Password-OTP</h4>
+                            <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+                                password is required to encrypt your paste!
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="fa fa-lock prefix"></i>
+                                <textarea class="materialize-textarea" rows="5" id="passwd"></textarea>
+                                <label for="passwd">Your Password:</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="passwdSubmit">Continue</a>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+                        </div>
+                    </div>
+
+                    <div class="modal modal-fixed-footer" id="pgpDialog" role="dialog">
+                        <div class="modal-content">
+                            <h4 class="modal-title">Encrypt your paste with PGP key</h4>
+                            <div class="alert alert-danger" role="alert" style="display: none;" id="passwdError">
+                                pgp-key is required to encrypt your paste!
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="fa fa-lock prefix"></i>
+                                <textarea class="materialize-textarea" rows="5" id="pgpkey"></textarea>
+                                <label for="pgpkey">Your PGP public-key:</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat" id="pgpSubmit">Continue</a>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+                        </div>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<script type="text/javascript" src="{{request.static_url('beepaste:static/js/ace/ace.js')}}"></script>-->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.6/min/ace.js"></script>
+      <script type="text/javascript" src="{{request.static_url('beepaste:static/js/beepaste.js')}}"></script>
+</div>
+
+{% endblock %}
