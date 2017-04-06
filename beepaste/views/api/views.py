@@ -10,7 +10,8 @@ from beepaste.models.pastes import Pastes
 def verifyKey(apikey, request):
     api_count = request.dbsession.query(API).filter_by(apikey=apikey).count()
     if api_count == 0:
-        return {'error': 'api-key is not valid.'}
+        #return {'error': 'api-key is not valid.'}
+        raise Exception('api-key is not valid.')
 
 @view_config(
                 route_name='api_intro',
