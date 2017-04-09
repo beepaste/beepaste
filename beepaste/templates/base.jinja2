@@ -28,13 +28,13 @@
     <meta property="og:site_name" content="BeePaste - A Free Pastebin!">
     <meta name="twitter:title" content="{{ title }}">
 
-    <link href="{{request.static_url('beepaste:static/css/style.css')}}" rel="stylesheet" media="screen,projection">
+    <link href="{{request.static_url('beepaste:static/css/style.min.css')}}" rel="stylesheet" media="screen,projection">
     <link href="{{request.static_url('beepaste:static/css/font-awesome.css')}}" rel="stylesheet">
   </head>
 
   <body>
     <script type="text/javascript" src="{{request.static_url('beepaste:static/js/jquery.min.js')}}"></script>
-    <script type="text/javascript" src="{{request.static_url('beepaste:static/js/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{request.static_url('beepaste:static/js/materialize.js')}}"></script>
 
     <div id='navbar'>
         {% include "navbar.jinja2" ignore missing with context %}

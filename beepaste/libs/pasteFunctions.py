@@ -127,8 +127,8 @@ def createPaste(form, request):
         newPaste.expire = datetime.datetime.utcnow() + datetime.timedelta(
                 seconds=int(form.pasteExpire.data))
     newPaste.encryption = form.pasteEncryption.data
-    newPaste.shortURL = generateShortURL(
-            request.route_url('view_paste', pasteID=URI), request)
+#    newPaste.shortURL = generateShortURL(
+#        request.route_url('view_paste', pasteID=URI), request)
     request.dbsession.add(newPaste)
     return URI
 

@@ -30,12 +30,10 @@ module.exports = (grunt) ->
       vendors:
         files: helpers.arrayToHash [
           # output path
-          "../beepaste/static/js/all.js",[
+          "../beepaste/static/js/beepaste.js",[
             # vendor files
-            "vendor/jquery/dist/jquery.min.js"
-            "vendor/materialize/dist/js/materialize.min.js"
             "vendor/openpgp/dist/openpgp.min.js"
-            "js/default.js"
+            "js/beepaste.js"
 	] ]
 
     # minify css
@@ -53,7 +51,7 @@ module.exports = (grunt) ->
         mangle: true
       my_target:
         files: [
-            '../beepaste/static/js/all.min.js': ['../beepaste/static/js/all.js']
+            '../beepaste/static/js/beepaste.min.js': ['../beepaste/static/js/beepaste.js']
         ]
 
 
@@ -72,6 +70,30 @@ module.exports = (grunt) ->
         cwd: './vendor/font-awesome/css/'
         src: 'font-awesome.css'
         dest: '../beepaste/static/css/'
+        flatten: false
+        filter: 'isFile'
+
+      materializeJS:
+        expand: true
+        cwd: './vendor/materialize/bin/'
+        src: 'materialize.js'
+        dest: '../beepaste/static/js/'
+        flatten: false
+        filter: 'isFile'
+
+      jqueryJS:
+        expand: true
+        cwd: './vendor/jquery-dist/'
+        src: 'jquery.min.js'
+        dest: '../beepaste/static/js/'
+        flatten: false
+        filter: 'isFile'
+
+      openpgpJS:
+        expand: true
+        cwd: './vendor/openpgp/dist/'
+        src: 'openpgp.worker.js'
+        dest: '../beepaste/static/js/'
         flatten: false
         filter: 'isFile'
 
