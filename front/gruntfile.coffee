@@ -103,7 +103,7 @@ module.exports = (grunt) ->
         'templates/*.jinja2'
         'templates/**/*.jinja2'
         'js/*.js'
-        'css/*.scss'
+        'sass/*.scss'
        ]
       tasks: ['devtasks']
 

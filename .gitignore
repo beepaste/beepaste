@@ -23,3 +23,7 @@ test
 
 front/vendor/*
 front/node_modules/*
+
+beepaste/static/css/style.min.css
+
+beepaste/static/js/all.min.js
