@@ -26,4 +26,6 @@ front/node_modules/*
 
 beepaste/static/css/style.min.css
 
-beepaste/static/js/all.min.js
+beepaste/static/*
+
+beepaste/static/css/font-awesome.css

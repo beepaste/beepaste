@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="{{ title }}">
 
     <link href="{{request.static_url('beepaste:static/css/style.css')}}" rel="stylesheet" media="screen,projection">
-    <link href="{{request.static_url('beepaste:static/css/font-awsome.css')}}" rel="stylesheet">
+    <link href="{{request.static_url('beepaste:static/css/font-awesome.css')}}" rel="stylesheet">
   </head>
 
   <body>
@@ -38,17 +38,17 @@
 
     <div id='navbar'>
         {% include "navbar.jinja2" ignore missing with context %}
-    </div>		
+    </div>
     <main>
         {% block content %}
         {% endblock %}
     </main>
-    <div if='footer'>	
+    <div if='footer'>
         {% include "footer.jinja2" ignore missing with context %}
-    </div>	
+    </div>
     <script>
         $(".button-collapse").sideNav();
     </script>
- 
+
   </body>
 </html>

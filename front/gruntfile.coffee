@@ -16,7 +16,7 @@ module.exports = (grunt) ->
     banners:
         credits: "/**\n * <%= pkg.name %>-<%= pkg.version %> <%= grunt.template.today('dd/mm/yyyy') %>\n * @author: <%= pkg.authors %>\n **/\n"
 
-    
+
     # compile sass
     sass:
       dist:
@@ -66,7 +66,15 @@ module.exports = (grunt) ->
         dest: '../beepaste/templates/'
         flatten: false
         filter: 'isFile'
-    
+
+      fa:
+        expand: true
+        cwd: './vendor/font-awesome/css/'
+        src: 'font-awesome.css'
+        dest: '../beepaste/static/css/'
+        flatten: false
+        filter: 'isFile'
+
       images:
         expand: true
         cwd: './images/'
@@ -74,7 +82,7 @@ module.exports = (grunt) ->
         dest: '../beepaste/static/img/'
         flatten: false
         filter: 'isFile'
-      
+
       fonts:
         expand: true
         cwd: 'vendor/font-awesome/fonts/'
@@ -82,7 +90,15 @@ module.exports = (grunt) ->
         dest: '../beepaste/static/fonts/'
         flatten: false
         filter: 'isFile'
-    
+
+      fonts2:
+        expand: true
+        cwd: './fonts'
+        src: '**'
+        dest: '../beepaste/static/fonts/'
+        flatten: false
+        filter: 'isFile'
+
     # clean files
     clean:
       static:
@@ -135,4 +151,3 @@ module.exports = (grunt) ->
                                     'cssmin',
                                     'watch'
                                   ]
-
