@@ -14,17 +14,17 @@
 
 // components
 //@import "vendor/materialize/sass/components/global";
-@import "custom_global";
+@import "./custom_global";
 @import "../vendor/materialize/sass/components/badges";
 @import "../vendor/materialize/sass/components/icons-material-design";
 @import "../vendor/materialize/sass/components/grid";
 @import "../vendor/materialize/sass/components/navbar";
-@import "custom_navbar";
+@import "./custom_navbar";
 @import "../vendor/materialize/sass/components/roboto";
 @import "../vendor/materialize/sass/components/typography";
 @import "../vendor/materialize/sass/components/transitions";
 //@import "vendor/materialize/sass/components/cards";
-@import "custom_cards";
+@import "./_custom_cards";
 @import "../vendor/materialize/sass/components/toast";
 @import "../vendor/materialize/sass/components/tabs";
 @import "../vendor/materialize/sass/components/tooltip";
@@ -44,7 +44,7 @@
 @import "../vendor/materialize/sass/components/date_picker/default";
 @import "../vendor/materialize/sass/components/date_picker/default.date";
 @import "../vendor/materialize/sass/components/date_picker/default.time";
-@import "custom";
+@import "./custom";
 
 
 //@import "../vendor/font-awesome/scss/font-awesome";
